@@ -11,7 +11,7 @@ import {
   MenuItem,
   Avatar,
   Tooltip,
-  Progress,
+  Progress, CardFooter,
 } from "@material-tailwind/react";
 import {
   ClockIcon,
@@ -24,7 +24,7 @@ import { StatisticsChart } from "@/widgets/charts";
 import {
   statisticsCardsData,
   statisticsChartsData,
-  projectsTableData,
+  monthlyCostTableData,
   ordersOverviewData,
 } from "@/data";
 
@@ -76,14 +76,14 @@ export function Home() {
           >
             <div>
               <Typography variant="h6" color="blue-gray" className="mb-1">
-                Projects
+                Elementy opłat
               </Typography>
               <Typography
                 variant="small"
                 className="flex items-center gap-1 font-normal text-blue-gray-600"
               >
                 <CheckIcon strokeWidth={3} className="h-4 w-4 text-blue-500" />
-                <strong>30 done</strong> this month
+                <strong>obecne</strong>
               </Typography>
             </div>
             <Menu placement="left-start">
@@ -107,7 +107,7 @@ export function Home() {
             <table className="w-full min-w-[640px] table-auto">
               <thead>
                 <tr>
-                  {["companies", "members", "budget", "completion"].map(
+                  {["Usługa", "ilość", "cena", "kwota"].map(
                     (el) => (
                       <th
                         key={el}
@@ -125,10 +125,10 @@ export function Home() {
                 </tr>
               </thead>
               <tbody>
-                {projectsTableData.map(
-                  ({ img, name, members, budget, completion }, key) => {
+                {monthlyCostTableData.map(
+                  ({ img, color, name, qty,price,total }, key) => {
                     const className = `py-3 px-5 ${
-                      key === projectsTableData.length - 1
+                      key === monthlyCostTableData.length - 1
                         ? ""
                         : "border-b border-blue-gray-50"
                     }`;
@@ -137,53 +137,42 @@ export function Home() {
                       <tr key={name}>
                         <td className={className}>
                           <div className="flex items-center gap-4">
-                            <Avatar src={img} alt={name} size="sm" />
+                            {React.createElement(img, {
+                              className: `!w-10 !h-10 ${color}`,
+                            })}
                             <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-bold"
+                            variant="small"
+                            color="blue-gray"
+                            className="font-bold"
                             >
-                              {name}
-                            </Typography>
+                            {name}
+                          </Typography>
                           </div>
                         </td>
                         <td className={className}>
-                          {members.map(({ img, name }, key) => (
-                            <Tooltip key={name} content={name}>
-                              <Avatar
-                                src={img}
-                                alt={name}
-                                size="xs"
-                                variant="circular"
-                                className={`cursor-pointer border-2 border-white ${
-                                  key === 0 ? "" : "-ml-2.5"
-                                }`}
-                              />
-                            </Tooltip>
-                          ))}
+                          <Typography
+                              variant="small"
+                              className="text-xs font-medium text-blue-gray-600"
+                          >
+                            {qty}
+                          </Typography>
                         </td>
                         <td className={className}>
                           <Typography
                             variant="small"
                             className="text-xs font-medium text-blue-gray-600"
                           >
-                            {budget}
+                            {price}
                           </Typography>
                         </td>
                         <td className={className}>
                           <div className="w-10/12">
                             <Typography
-                              variant="small"
-                              className="mb-1 block text-xs font-medium text-blue-gray-600"
+                                variant="small"
+                                className="text-xs font-big font-bold text-blue-gray-600"
                             >
-                              {completion}%
+                              {total}
                             </Typography>
-                            <Progress
-                              value={completion}
-                              variant="gradient"
-                              color={completion === 100 ? "green" : "blue"}
-                              className="h-1"
-                            />
                           </div>
                         </td>
                       </tr>
@@ -193,6 +182,16 @@ export function Home() {
               </tbody>
             </table>
           </CardBody>
+          <CardFooter>
+            <div className="flex flex-row justify-end">
+              <Typography variant="h5" color="blue-gray" className="mb-1 font-normal">
+                Razem :
+              </Typography>
+              <Typography variant="h5" color="blue-gray" className="mb-1 font-extrabold">
+                538,31 zł
+              </Typography>
+            </div>
+          </CardFooter>
         </Card>
         <Card>
           <CardHeader

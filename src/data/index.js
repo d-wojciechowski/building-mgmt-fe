@@ -1,6 +1,6 @@
 export * from "@/data/statistics-cards-data";
 export * from "@/data/statistics-charts-data";
-export * from "@/data/projects-table-data";
+export * from "@/data/monthly-cost-table-data.ts";
 export * from "@/data/orders-overview-data";
 export * from "@/data/platform-settings-data";
 export * from "@/data/conversations-data";

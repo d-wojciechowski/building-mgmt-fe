@@ -9,7 +9,7 @@ import {
   Progress,
 } from "@material-tailwind/react";
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
-import { authorsTableData, projectsTableData } from "@/data";
+import { authorsTableData, monthlyCostTableData } from "@/data";
 
 export function Tables() {
   return (
@@ -133,10 +133,10 @@ export function Tables() {
               </tr>
             </thead>
             <tbody>
-              {projectsTableData.map(
+              {monthlyCostTableData.map(
                 ({ img, name, members, budget, completion }, key) => {
                   const className = `py-3 px-5 ${
-                    key === projectsTableData.length - 1
+                    key === monthlyCostTableData.length - 1
                       ? ""
                       : "border-b border-blue-gray-50"
                   }`;
