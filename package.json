@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@heroicons/react": "2.0.12",
-    "@material-tailwind/react": "1.2.4",
+    "@material-tailwind/react": "2.0.1",
     "apexcharts": "3.35.5",
     "prop-types": "15.8.1",
     "react": "18.2.0",
@@ -33,7 +33,7 @@
     "postcss": "8.4.17",
     "prettier": "2.7.1",
     "prettier-plugin-tailwindcss": "0.1.13",
-    "tailwindcss": "3.1.8",
+    "tailwindcss": "3.3.2",
     "typescript": "^5.0.2",
     "vite": "^4.3.9"
   }
